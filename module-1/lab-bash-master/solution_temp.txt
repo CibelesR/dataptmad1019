@@ -1,46 +1,77 @@
-﻿1. Print Hello World in console
+• Print Hello World in console.
 Echo ‘Hello World’
 
-2. Create a new folder named new_dir
-Exercises
-• Print Hello World in console.
-Para hacer aparecer por pantalla “Hello World”
+
 • Create a new folder named new_dir.
 mkdir new_dir
+
 
 • Delete new_dir folder.
 rm –r new_dir
 
+
 • Make a copy of sed.txt (located in the lorem folder) to lorem-copy.
 cp lorem/sed.txt lorem-copy
-• 
+
+
 • Copy the rest of the files located in lorem to lorem-copy using only one code line (tip: use ;).
-• cp lorem/at.txt lorem/lorem.txt lorem-copy
+cp lorem/at.txt lorem/lorem.txt lorem-copy
+
 
 • Locate at lorem folder and show sed.txt content
 cat lorem/sed.txt
 
+
 • Locate at lorem folder and show at.txt and lorem.txt content.
-• cat lorem/at.txt lorem/lorem.txt
+cat lorem/at.txt lorem/lorem.txt
 
 
 • Locate at lorem-copy folder and show the first three lines of sed.txt.
 head -n 3 lorem/sed.txt
 
-• Locate at lorem-copy folder and show the last three lines of sed.txt.
 
+• Locate at lorem-copy folder and show the last three lines of sed.txt.
 tail -n 3 lorem-copy/sed.txt
 
-• Add Homo homini lupus. at the end of sed.txt located at lorem-copy.
 
-<
+• Add Homo homini lupus. at the end of sed.txt located at lorem-copy.
+nano lorem-copy/sed.txt #Add the line manually
+
+#Option by Octavio: echo “Homo homini lupus.” >> lorem-copy/sed.txt.
+ 
+
 • Locate at lorem-copy folder and show the last three lines of sed.txt. Now you should see Homo homini lupus..
+
+cd loren-copy
+tail -n 3 sed.txt
+
+
 • Change every et to ET in at.txt located at lorem-copy (tip: use sed).
+sed 's/et/ET/g' at.txt
+#It is not possible to use the set -i in Mac
+
+
 • Find the active user of the system.
+echo $USER
+
+
 • Find out where are you located within the system.
+pwd
+
+
 • List all .txt files located at lorem.
+find ./lorem -name '*.txt' -type f 
+
+
 • Count the number of lines in sed.txt located at lorem.
+cd lorem
+wc -l sed.txt
+
+
 • Count the number of files which name starts with lorem located at the whole lab directory.
+
+
+
 • Find every appearance of et in at.txt located at lorem.
 • Find every appearance of the string et in at.txt located at lorem.
 • Find every appearance of the string et located at the whole lab directory.
