@@ -43,10 +43,87 @@ where (titles.title_id = titleauthor.title_id) and (authors.au_id = titleauthor.
 -- If your query is correct, the total rows in your output should be the same as the total number of records in Table titleauthor.
 
 create VIEW temp_challenge1 as
-select authors.au_id as 'AUTHOR ID', authors.au_lname as 'LAST NAME', authors.au_fname as 'FIRST NAME', 
-titles.title as 'TITLE', publishers.pub_name as 'PUBLISHER'
+select authors.au_id, authors.au_lname, authors.au_fname, 
+titles.title, publishers.pub_name
 from titles, authors, publishers, titleauthor
 where (titles.title_id = titleauthor.title_id) and (authors.au_id = titleauthor.au_id) and (publishers.pub_id = titles.pub_id)
 
-select *
-from views.temp_challenge1
+select au_id as 'AUTHOR ID', au_lname as 'LAST NAME', au_fname as 'FIRST NAME', title as 'TITLE', pub_name as 'PUBLISHER'
+from temp_challenge1
+
+
+-- Challenge 2 - Who Have Published How Many At Where?
+-- Elevating from your solution in Challenge 1, query how many titles each author has published at each publisher.
+
+create VIEW temp_challenge2 as
+select au_id as 'AUTHOR ID', au_lname as 'LAST NAME', au_fname as 'FIRST NAME', 
+pub_name as 'PUBLISHER', count(title) as 'title_count'
+from temp_challenge1
+group by au_id, pub_name
+order by count(title) desc;
+	
+
+select sum(title_count)
+from temp_challenge2
+
+select count(*)
+from titleauthor
+
+
+-- Challenge 3 - Who are the top 3 authors who have sold the highest number of titles? Write a query to find out.
+
+-- I will create a view 
+
+create view temp_challenge3 as
+select authors.au_id as au_id, authors.au_lname as au_lname, authors.au_fname as au_fname, 
+titles.title as title, titles.title_id as title_id
+from titles, authors, sales, titleauthor
+where (titles.title_id = titleauthor.title_id) and (authors.au_id = titleauthor.au_id)
+
+
+
+select temp_challenge3.au_id as 'AUTHOR ID', temp_challenge3.au_lname as 'LAST NAME', temp_challenge3.au_fname as 'FIRST NAME',
+temp_challenge3.title, sales.qty as 'TOTAL'
+from temp_challenge3
+left JOIN sales
+on temp_challenge3.title_id = sales.title_id
+group by temp_challenge3.title_id, temp_challenge3.au_id
+ 
+
+--select "AUTHOR ID", "LAST NAME", "FIRST NAME", sum ((DISTINCT "AUTHOR ID") sales)
+--from temp_challenge3_v2
+--group by "AUTHOR ID"
+--order by sales desc
+--limit 3;
+
+select "AUTHOR ID", "LAST NAME", "FIRST NAME", sum(sales)
+from temp_challenge3_v2
+group by "AUTHOR ID"
+order by sales DESC
+
+limit 3;
+-- For a reason I do not understand the order by is not correct, I have 50, 50, 40 and it must be 50, 50, 45
+
+-- Challenge 4
+
+select "AUTHOR ID", "LAST NAME", "FIRST NAME", sum(sales)
+from temp_challenge3_v2
+group by "AUTHOR ID"
+order by sales desc
+
+-- Same as challenge 3, I do not understand why order by desc is not working
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
