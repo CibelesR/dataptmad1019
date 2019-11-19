@@ -96,24 +96,25 @@ group by temp_challenge3.title_id, temp_challenge3.au_id
 --order by sales desc
 --limit 3;
 
-select "AUTHOR ID", "LAST NAME", "FIRST NAME", sum(sales)
+select "AUTHOR ID", "LAST NAME", "FIRST NAME", sum(sales) AS 'TOTAL'
 from temp_challenge3_v2
 group by "AUTHOR ID"
-order by sales DESC
-
+order by TOTAL DESC
 limit 3;
--- For a reason I do not understand the order by is not correct, I have 50, 50, 40 and it must be 50, 50, 45
+
 
 -- Challenge 4
 
-select "AUTHOR ID", "LAST NAME", "FIRST NAME", sum(sales)
+select "AUTHOR ID", "LAST NAME", "FIRST NAME", ifnull (sum(sales),0) as 'TOTAL'
 from temp_challenge3_v2
 group by "AUTHOR ID"
-order by sales desc
+order by TOTAL desc
 
--- Same as challenge 3, I do not understand why order by desc is not working
+-- Same as challenge 3
 
 
+select ifnull (sales, 0) as 'TOTAL'
+from temp_challenge3_v2
 
 
 
