@@ -116,18 +116,44 @@ Note: you don't have to use Numpy in this question.
 
 print(prueba(f))'''
 d = []
+
+
+
+#for i in f:
+#    for j in i:
+ #       for n in j:
+  #          #print (n)
+   #         if d_mean < n > d_min:
+    #            d.append(25)
+     #       elif d_max < n > d_mean:
+      #          d.append(75)
+       #     elif n == d_min:
+        #        d.append(0)
+         #   elif n == d_max:
+          #      d.append(100)
+
+
+
+
+condition_1 = 25
+condition_2 = 75
+condition_3 = 0
+condition_4 = 100
+
+
 for i in f:
     for j in i:
         for n in j:
             #print (n)
             if d_mean < n > d_min:
-                return ('Hola')
+                d.append(condition_1)
             elif d_max < n > d_mean:
-                d.append(75)
+                d.append(condition_2)
             elif n == d_min:
-                d.append(0)
+                d.append(condition_3)
             elif n == d_max:
-                d.append(100)
+                d.append(condition_4)
+
 
 print('Prueba')
 print(d)
