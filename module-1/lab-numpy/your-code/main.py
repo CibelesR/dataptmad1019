@@ -115,48 +115,55 @@ Note: you don't have to use Numpy in this question.
         return i
 
 print(prueba(f))'''
-d = []
+f = []
 
+
+
+for i in d:
+    for j in i:
+        for n in j:
+            #print (n)
+            if n == d_mean:
+                f.append(50)
+            elif n == d_min:
+                f.append(0)
+            elif n == d_max:
+                f.append(100)
+            elif d_min < n < d_mean:
+                f.append(25)
+            elif d_mean < n > d_max:
+                f.append(75)
+
+
+
+
+
+
+
+#condition_1 = 25
+#condition_2 = 75
+#condition_3 = 0
+#condition_4 = 100
 
 
 #for i in f:
 #    for j in i:
  #       for n in j:
-  #          #print (n)
-   #         if d_mean < n > d_min:
-    #            d.append(25)
-     #       elif d_max < n > d_mean:
-      #          d.append(75)
-       #     elif n == d_min:
-        #        d.append(0)
-         #   elif n == d_max:
-          #      d.append(100)
+#            #print (n)
+ #           if d_mean < n > d_min:
+ #               d.append(condition_1)
+  #          elif d_max < n > d_mean:
+   #             d.append(condition_2)
+   #         elif n == d_min:
+    #            d.append(condition_3)
+     #       elif n == d_max:
+         #       d.append(condition_4)
 
 
-
-
-condition_1 = 25
-condition_2 = 75
-condition_3 = 0
-condition_4 = 100
-
-
-for i in f:
-    for j in i:
-        for n in j:
-            #print (n)
-            if d_mean < n > d_min:
-                d.append(condition_1)
-            elif d_max < n > d_mean:
-                d.append(condition_2)
-            elif n == d_min:
-                d.append(condition_3)
-            elif n == d_max:
-                d.append(condition_4)
 
 
 print('Prueba')
-print(d)
+print(f)
 
 
 
